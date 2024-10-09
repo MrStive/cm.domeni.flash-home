@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: "flash-home"
+  datasource:
+    url: "jdbc:postgresql://localhost:5432/cm_domeni_flashhome_db"
+    username: "postgres"
+    password: "domenisteve@gmail.com"
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true

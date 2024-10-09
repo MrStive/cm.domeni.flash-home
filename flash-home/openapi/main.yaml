@@ -1,0 +1,83 @@
+openapi: "3.0.2"
+info:
+  title: API FLASH HOME
+  version: "1.0"
+servers:
+  - url: https://api.server.test/v1
+paths:
+  /building:
+    post:
+      tags:
+        - Building
+      summary: create Building
+      description: create Building
+      operationId: createNewBuilding
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BuildingDTO'
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: string
+                format: uuid
+components:
+  schemas:
+    DemoDTO:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+    BuildingDTO:
+      type: object
+      properties:
+        name:
+          type: string
+          format: uuid
+        description:
+          type: string
+        storey:
+          type: string
+          $ref: '#/components/schemas/StoreyBuildingDTO'
+        address:
+          type: string
+          $ref: '#/components/schemas/StoreyBuildingDTO'
+        amenities:
+          type: array
+          items:
+            $ref: '#/components/schemas/AmenitiesDTO'
+    StoreyBuildingDTO:
+      enum:
+        - SINGLE
+        - MULTI
+    ExternalAmenitiesDTO:
+      enum:
+        - PARKING
+        - BARRIER
+        - TERRACE
+        - BALCONY
+    InternalAmenitiesDTO:
+          enum:
+            - CUPBOARD
+            - TILED
+    AddressDTO:
+      type: object
+      properties:
+        cityName:
+          type: string
+        country:
+          type: string
+    AmenitiesDTO:
+      type: object
+      properties:
+        internal:
+            $ref: '#/components/schemas/InternalAmenitiesDTO'
+        external:
+            $ref: '#/components/schemas/ExternalAmenitiesDTO'
