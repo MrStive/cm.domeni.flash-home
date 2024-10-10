@@ -57,27 +57,18 @@ components:
       enum:
         - SINGLE
         - MULTI
-    ExternalAmenitiesDTO:
+    AmenitiesDTO:
       enum:
         - PARKING
         - BARRIER
         - TERRACE
         - BALCONY
-    InternalAmenitiesDTO:
-          enum:
-            - CUPBOARD
-            - TILED
+        - CUPBOARD
+        - TILED
     AddressDTO:
       type: object
       properties:
         cityName:
           type: string
-        country:
+        district:
           type: string
-    AmenitiesDTO:
-      type: object
-      properties:
-        internal:
-            $ref: '#/components/schemas/InternalAmenitiesDTO'
-        external:
-            $ref: '#/components/schemas/ExternalAmenitiesDTO'

@@ -46,6 +46,7 @@ dependencies {
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+	implementation('org.eclipse.persistence:eclipselink:2.7.7')
 
 	// OPENAPI
 	implementation('io.swagger:swagger-annotations:1.6.11')
