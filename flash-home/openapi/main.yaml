@@ -44,31 +44,71 @@ components:
         description:
           type: string
         storey:
-          type: string
           $ref: '#/components/schemas/StoreyBuildingDTO'
         address:
-          type: string
-          $ref: '#/components/schemas/StoreyBuildingDTO'
+          $ref: '#/components/schemas/AddressDTO'
         amenities:
           type: array
           items:
             $ref: '#/components/schemas/AmenitiesDTO'
+        modality:
+          $ref: '#/components/schemas/modalityDTO'
     StoreyBuildingDTO:
       enum:
         - SINGLE
         - MULTI
     AmenitiesDTO:
-      enum:
-        - PARKING
-        - BARRIER
-        - TERRACE
-        - BALCONY
-        - CUPBOARD
-        - TILED
+      type: object
+      properties:
+        name:
+          type: string
+          description: the name of the amenities of the building
+        description:
+          type: string
+          description: the description of the amenities building
+        type:
+          $ref: '#/components/schemas/AmenityTypeDTO'
     AddressDTO:
       type: object
       properties:
+        country:
+          type: string
         cityName:
           type: string
+        reference:
+          $ref: '#/components/schemas/AmenityTypeDTO'
         district:
           type: string
+    ReferenceDTO:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+    AmenityTypeDTO:
+      enum:
+        - EXTERNAL
+        - INTERNAL
+    modalityDTO:
+      type: object
+      properties:
+        price:
+          $ref: '#/components/schemas/MoneyDTO'
+        paymentFrequency:
+          $ref: '#/components/schemas/PaymentFrequencyDTO'
+        caution:
+          type: integer
+        minimum:
+          type: integer
+    MoneyDTO:
+      type: object
+      properties:
+        value:
+          type: number
+        currency:
+          type: string
+    PaymentFrequencyDTO:
+      enum:
+        - MONTH
+        - YEAR
